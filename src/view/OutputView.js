@@ -9,7 +9,11 @@ class OutputView {
   printTotalLotto(num){
     this.printLineBreak();
     Console.print(`${num}${OUTPUT_MESSAGE.boughtLottoCount}`)
-  }  
+  }
+
+  printInput(input){
+    Console.print(input);
+  }
 }
 
 export default OutputView;

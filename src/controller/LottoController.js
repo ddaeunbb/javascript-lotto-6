@@ -1,4 +1,5 @@
 /* eslint-disable lines-between-class-members */
+import { Console } from '@woowacourse/mission-utils';
 import InputView from '../view/InputView';
 import OutputView from '../view/OutputView';
 import PlayerLottoAmount from '../domain/PlayerLottoAmount';
@@ -21,6 +22,7 @@ class LottoController{
     await this.receivePlayerTotalMoney();
     this.showLottoAmount();
     this.issueLottosForAmount();
+    this.showLottoArr();
   }
   
   async receivePlayerTotalMoney(){
@@ -37,6 +39,11 @@ class LottoController{
   issueLottosForAmount(){
     const lottoAmount = this.#playerLottoAmount.getLottoAmount();
     this.#lottoNumbers.makeLottoListMap(lottoAmount);
+  }
+
+  showLottoArr(){
+    const lottoMap = this.#lottoNumbers.getLottoNumbers();
+    lottoMap.forEach(numsArr => this.#outputView.printInput(numsArr));
   }
 }
 

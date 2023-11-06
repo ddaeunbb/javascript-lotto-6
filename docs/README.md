@@ -25,7 +25,7 @@
 - [x] 유니크한 6개 숫자를 뽑는다. (로또랜덤숫자만들기 도메인)
   - 이때 `Random.pickUniqueNumbersInRange()`를 사용한다.
 - [x] 숫자를 오름차순으로 정렬한다. (로또 랜덤숫자만들기 도메인 or utils)
-- [ ] 보너스 숫자를 제외한 6개 숫자를 출력한다. (outview)
+- [x] 보너스 숫자를 제외한 6개 숫자를 출력한다. (outview)
   - `Console.print`를 사용한다.
 
 ---
