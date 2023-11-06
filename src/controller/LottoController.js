@@ -1,5 +1,4 @@
 /* eslint-disable lines-between-class-members */
-import { Console } from '@woowacourse/mission-utils';
 import InputView from '../view/InputView';
 import OutputView from '../view/OutputView';
 import PlayerLottoAmount from '../domain/PlayerLottoAmount';
@@ -44,6 +43,7 @@ class LottoController{
   showLottoArr(){
     const lottoMap = this.#lottoNumbers.getLottoNumbers();
     lottoMap.forEach(numsArr => this.#outputView.printInput(numsArr));
+    this.#outputView.printLineBreak();
   }
 }
 
