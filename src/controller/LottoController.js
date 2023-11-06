@@ -21,7 +21,9 @@ class LottoController{
   async receivePlayerTotalMoney(){
     const totalMoney = await this.#inputView.receiveTotalMoney();
     this.#playerLottoAmount.validate(totalMoney);
+    this.#playerLottoAmount.setVariables(totalMoney);
   }
+
 }
 
 export default LottoController;

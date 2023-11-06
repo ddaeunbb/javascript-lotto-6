@@ -1,5 +1,4 @@
 /* eslint-disable lines-between-class-members */
-import { Console } from '@woowacourse/mission-utils'
 import { REGEX_NUM } from '../constants/regex'
 import { ERR_MESSAGE } from '../constants/message'
 import { LOTTO_VAL } from '../constants/constant'
@@ -25,6 +24,19 @@ class PlayerLottoAmount{
   validate(str){
     this.#isNumber(str);
     this.#isDividedThousand(str);
+  }
+
+  #setLottoAmount(str){
+    this.#lottoAmount = Number(str) / LOTTO_VAL;
+  }
+
+  #setTotalMoney(str){
+    this.#totalMoney = Number(str);
+  }
+  
+  setVariables(str){
+    this.#setLottoAmount(str);
+    this.#setTotalMoney(str);
   }
 }
 
