@@ -3,12 +3,15 @@ import InputView from '../view/InputView';
 import OutputView from '../view/OutputView';
 import PlayerLottoAmount from '../domain/PlayerLottoAmount';
 import LottoNumbers from '../domain/LottoNumbers';
+import Lotto from '../domain/Lotto';
+import TYPE_CONVERTOR from '../utils/typeConvertor';
 
 class LottoController{
   #inputView;
   #outputView;
   #playerLottoAmount
   #lottoNumbers
+  #lotto
 
   constructor(){
     this.#inputView = new InputView();
@@ -19,9 +22,7 @@ class LottoController{
 
   async play(){
     await this.receivePlayerTotalMoney();
-    this.showLottoAmount();
-    this.issueLottosForAmount();
-    this.showLottoArr();
+    
   }
   
   async receivePlayerTotalMoney(){
@@ -44,6 +45,12 @@ class LottoController{
     const lottoMap = this.#lottoNumbers.getLottoNumbers();
     lottoMap.forEach(numsArr => this.#outputView.printInput(numsArr));
     this.#outputView.printLineBreak();
+  }
+
+  async receivePlayerLottoNums(){
+    const lottoNums = await this.#inputView.receiveUserLotto();
+    const numArr = TYPE_CONVERTOR.strToNumArr(lottoNums);
+    this.#lotto = new Lotto(numArr);
   }
 }
 
