@@ -16,17 +16,24 @@ class Lotto {
   }
 
   #isDuplicated(numArr){
-    const result = new Set(numArr).length === numArr.length;
+    const result = new Set(numArr).size === numArr.length;
     if(!result) throw new Error(ERR_MESSAGE.notDuplicated);
   }
 
   #isNumber(num){
-    if(!REGEX_NUM.test(num)) throw new Error(ERR_MESSAGE.notNum);
+    const numToStr = num.toString();
+    if(!REGEX_NUM.test(numToStr)) throw new Error(ERR_MESSAGE.notNum);
   }
 
   #isUnderFourtyFive(num){
-    const result = num >= 1 && num <= 45;
+    const { start, end } = LOTTO_RANGE;
+    const result = num >= start && num <= end;
     if(!result) throw new Error(ERR_MESSAGE.notUnderFourtyFive);
+  }
+
+  #isInCludedInLotto(num){
+    const result = this.#numbers.indexOf(num) < 0;
+    if(!result) throw new Error(ERR_MESSAGE.notDuplicated);
   }
 
   #validateLottoNums(numArr) {
@@ -38,8 +45,14 @@ class Lotto {
     })
   }
 
-  validateBonusNum(){
-    
+  validateBonusNum(num){
+    this.#isNumber(num);
+    this.#isUnderFourtyFive(num);
+    this.#isInCludedInLotto(num);
+  }
+
+  addBonusToNumbers(num){
+    this.#numbers.push(num);
   }
 }
 

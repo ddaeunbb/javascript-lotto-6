@@ -22,6 +22,11 @@ class LottoController{
 
   async play(){
     await this.receivePlayerTotalMoney();
+    this.showLottoAmount();
+    this.issueLottosForAmount();
+    this.showLottoArr();
+    await this.receivePlayerLottoNums();
+    await this.receivePlayerBonusNums();
   }
   
   async receivePlayerTotalMoney(){
@@ -54,9 +59,10 @@ class LottoController{
 
   async receivePlayerBonusNums(){
     this.#outputView.printLineBreak();
-    const lottoNums = await this.#inputView.receiveUserBonusNum();
-    const numArr = TYPE_CONVERTOR.strToNumArr(lottoNums);
-    this.#lotto = new Lotto(numArr);
+    const bonusStr = await this.#inputView.receiveUserBonusNum();
+    const bonusNum = TYPE_CONVERTOR.strToNum(bonusStr);
+    this.#lotto.validateBonusNum(bonusNum);
+    this.#lotto.addBonusToNumbers(bonusNum);
   }
 }
 
