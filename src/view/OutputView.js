@@ -8,11 +8,16 @@ class OutputView {
 
   printTotalLotto(num){
     this.printLineBreak();
-    return Console.print(`${num}${OUTPUT_MESSAGE.lottoCount}`)
+    Console.print(`${num}${OUTPUT_MESSAGE.lottoCount}`)
   }
 
   printInput(input){
-    return Console.print(input);
+    Console.print(input);
+  }
+
+  printResultPhrase(){
+    this.printLineBreak();
+    Console.print(OUTPUT_MESSAGE.winStatistics);
   }
 }
 
