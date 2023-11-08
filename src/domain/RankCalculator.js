@@ -1,9 +1,10 @@
 /* eslint-disable lines-between-class-members */
-import { RANK, RANK_BY_COUNT, RANK_STANDARD } from '../constants/constant';
+import { CONVERTER_VAR, RANK, RANK_BY_COUNT, RANK_BY_PRIZE, RANK_STANDARD , REGEX } from '../constants/constant';
 
 class RankCalculator {
   #totalRank;
   #totalPrizeMoney;
+  #totalProfit;
 
   constructor(){
     const { first, second, third, fourth, fifth} = RANK
@@ -26,14 +27,6 @@ class RankCalculator {
     return answerLotto.includes(bonusNum)
   }
 
-  #setElseRank(count){
-    const { standardOfRank } = RANK_STANDARD;
-    if(count >= standardOfRank) {
-      let result = this.#totalRank.get(RANK_BY_COUNT[count]);
-      this.#totalRank.set(RANK_BY_COUNT[count], result += 1);
-    }
-  }
-
   #setSecondOrThirdRank(wasBonus){
     const { second, third} = RANK;
     if(wasBonus){
@@ -42,6 +35,14 @@ class RankCalculator {
     }
     let result = this.#totalRank.get(third);
     this.#totalRank.set(third, result += 1);
+  }
+
+  #setElseRank(count){
+    const { standardOfRank } = RANK_STANDARD;
+    if(count >= standardOfRank) {
+      let result = this.#totalRank.get(RANK_BY_COUNT[count]);
+      this.#totalRank.set(RANK_BY_COUNT[count], result += 1);
+    }
   }
 
   calculateRank(userLotto, lottoMap){
@@ -55,6 +56,21 @@ class RankCalculator {
       }
       this.#setElseRank(count);
     });
+  }
+
+  calculatePrizeMoney(){
+    this.#totalRank.forEach((count, rank) => {
+      this.#totalPrizeMoney += RANK_BY_PRIZE[rank] * count;
+    })
+  }
+
+  calculateProfit(money){
+    const { everyThreeUnit } = REGEX;
+    const { comma } = CONVERTER_VAR;
+    
+    const profit = (( this.#totalPrizeMoney / money) * 100).toFixed(1);
+    const num  = profit.toString().replace(everyThreeUnit, comma);
+    return num;
   }
 
   getTotalRank(){

@@ -1,4 +1,8 @@
 export const LOTTO_VAL = 1000;
+export const REGEX = {
+  num:  /^[0-9]+$/,
+  everyThreeUnit: /\B(?=(\d{3})+(?!\d))/g,
+}
 
 export const LOTTO_RANGE = {
   start: 1,
@@ -35,4 +39,12 @@ export const RANK_BY_COUNT = {
 export const RANK_STANDARD = {
   standardOfRank: 3,
   standardOfBonus: 5,
+}
+
+export const RANK_BY_PRIZE = {
+  1: 2000000000,
+  2: 30000000,
+  3: 1500000,
+  4: 50000,
+  5: 5000,
 }

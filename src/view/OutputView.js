@@ -8,8 +8,7 @@ class OutputView {
   }
 
   printTotalLotto(num){
-    this.printLineBreak();
-    Console.print(`${num}${OUTPUT_MESSAGE.lottoCount}`)
+    Console.print(num + OUTPUT_MESSAGE.lottoCount);
   }
 
   printInput(input){
@@ -17,13 +16,17 @@ class OutputView {
   }
 
   printResultPhrase(){
-    this.printLineBreak();
     Console.print(OUTPUT_MESSAGE.winStatistics);
   }
 
   printTotalRank(rank, count){
     const order = NUMBER_BY_RANK[rank];
     Console.print(OUTPUT_MESSAGE[order] + count + OUTPUT_MESSAGE.unit);
+  }
+
+  printTotalProfit(profit){
+    const { total, isEnd } = OUTPUT_MESSAGE;
+    Console.print(total + profit + isEnd);
   }
 }
 
