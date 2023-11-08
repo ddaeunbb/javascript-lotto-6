@@ -54,6 +54,10 @@ class Lotto {
   addBonusToNumbers(num){
     this.#numbers.push(num);
   }
+
+  getUserLotto(){
+    return this.#numbers;
+  }
 }
 
 export default Lotto;

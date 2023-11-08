@@ -4,6 +4,7 @@ import OutputView from '../view/OutputView';
 import PlayerLottoAmount from '../domain/PlayerLottoAmount';
 import LottoNumbers from '../domain/LottoNumbers';
 import Lotto from '../domain/Lotto';
+import RankCalculator from '../domain/RankCalculator';
 import TYPE_CONVERTOR from '../utils/typeConvertor';
 
 class LottoController{
@@ -12,12 +13,14 @@ class LottoController{
   #playerLottoAmount
   #lottoNumbers
   #lotto
+  #rankCalculator
 
   constructor(){
     this.#inputView = new InputView();
     this.#outputView = new OutputView();
     this.#playerLottoAmount = new PlayerLottoAmount();
     this.#lottoNumbers = new LottoNumbers();
+    this.#rankCalculator = new RankCalculator();
   }
 
   async play(){
@@ -27,6 +30,7 @@ class LottoController{
     this.showLottoArr();
     await this.receivePlayerLottoNums();
     await this.receivePlayerBonusNums();
+    this.calculateTotalRank();
   }
   
   async receivePlayerTotalMoney(){
@@ -63,6 +67,12 @@ class LottoController{
     const bonusNum = TYPE_CONVERTOR.strToNum(bonusStr);
     this.#lotto.validateBonusNum(bonusNum);
     this.#lotto.addBonusToNumbers(bonusNum);
+  }
+
+  calculateTotalRank(){
+    const userLotto = this.#lotto.getUserLotto();
+    const lottoMap = this.#lottoNumbers.getLottoNumbers();
+    this.#rankCalculator.calculateRank(userLotto, lottoMap);
   }
 }
 

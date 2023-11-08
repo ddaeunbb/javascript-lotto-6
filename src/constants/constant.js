@@ -9,3 +9,19 @@ export const LOTTO_RANGE = {
 export const CONVERTER_VAR = {
   comma: ',',
 }
+
+export const RANK = {
+  first: 1,
+  second: 2,
+  third: 3,
+  fourth: 4,
+  fifth: 5,
+}
+
+export const RANK_BY_COUNT = {
+  '3': 5,
+  '4': 4,
+  '6': 1,
+  standardOfRank: 3,
+  standardOfBonus: 5,
+}
