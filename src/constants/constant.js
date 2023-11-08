@@ -18,10 +18,21 @@ export const RANK = {
   fifth: 5,
 }
 
+export const NUMBER_BY_RANK = {
+  1: 'first',
+  2: 'second',
+  3: 'third',
+  4: 'fourth',
+  5: 'fifth',
+}
+
 export const RANK_BY_COUNT = {
-  '3': 5,
-  '4': 4,
-  '6': 1,
+  3: 5,
+  4: 4,
+  6: 1,
+}
+
+export const RANK_STANDARD = {
   standardOfRank: 3,
   standardOfBonus: 5,
 }

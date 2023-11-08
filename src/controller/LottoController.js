@@ -31,6 +31,7 @@ class LottoController{
     await this.receivePlayerLottoNums();
     await this.receivePlayerBonusNums();
     this.calculateTotalRank();
+    this.showTotalRank();
   }
   
   async receivePlayerTotalMoney(){
@@ -73,6 +74,11 @@ class LottoController{
     const userLotto = this.#lotto.getUserLotto();
     const lottoMap = this.#lottoNumbers.getLottoNumbers();
     this.#rankCalculator.calculateRank(userLotto, lottoMap);
+  }
+
+  showTotalRank(){
+    const rankMap = this.#rankCalculator.getTotalRank();
+    rankMap.forEach((count, rank) => this.#outputView.printTotalRank(rank, count));
   }
 }
 

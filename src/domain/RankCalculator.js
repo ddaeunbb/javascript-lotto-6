@@ -1,5 +1,5 @@
 /* eslint-disable lines-between-class-members */
-import { RANK, RANK_BY_COUNT } from '../constants/constant';
+import { RANK, RANK_BY_COUNT, RANK_STANDARD } from '../constants/constant';
 
 class RankCalculator {
   #totalRank;
@@ -8,7 +8,7 @@ class RankCalculator {
   constructor(){
     const { first, second, third, fourth, fifth} = RANK
     this.#totalRank = new Map([
-      [first,0],[second,0],[third,0],[fourth,0],[fifth,0]
+      [fifth,0],[fourth,0],[third,0],[second,0],[first,0]
     ]);
     this.#totalPrizeMoney = 0;
   }
@@ -27,7 +27,7 @@ class RankCalculator {
   }
 
   #setElseRank(count){
-    const { standardOfRank } = RANK_BY_COUNT;
+    const { standardOfRank } = RANK_STANDARD;
     if(count >= standardOfRank) {
       let result = this.#totalRank.get(RANK_BY_COUNT[count]);
       this.#totalRank.set(RANK_BY_COUNT[count], result += 1);
@@ -45,7 +45,7 @@ class RankCalculator {
   }
 
   calculateRank(userLotto, lottoMap){
-    const { standardOfBonus } = RANK_BY_COUNT;
+    const { standardOfBonus } = RANK_STANDARD;
     lottoMap.forEach(correctLotto => {
       const count = this.#calculateRightNum(correctLotto, userLotto);
       if(count === standardOfBonus){
@@ -55,6 +55,10 @@ class RankCalculator {
       }
       this.#setElseRank(count);
     });
+  }
+
+  getTotalRank(){
+    return this.#totalRank;
   }
 }
 

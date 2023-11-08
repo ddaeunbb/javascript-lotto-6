@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import { OUTPUT_MESSAGE } from '../constants/message';
+import { NUMBER_BY_RANK } from '../constants/constant';
 
 class OutputView {
   printLineBreak(){
@@ -18,6 +19,11 @@ class OutputView {
   printResultPhrase(){
     this.printLineBreak();
     Console.print(OUTPUT_MESSAGE.winStatistics);
+  }
+
+  printTotalRank(rank, count){
+    const order = NUMBER_BY_RANK[rank];
+    Console.print(OUTPUT_MESSAGE[order] + count + OUTPUT_MESSAGE.unit);
   }
 }
 
