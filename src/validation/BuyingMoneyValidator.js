@@ -12,7 +12,7 @@ class BuyingMoneyValidator {
   * @param {number} num
   */
   static isNumber(num) {
-    if(REGEX_NUM.test(num)) throw new CustomError(ERROR_MESSAGE.shouldBeNumber);
+    if(!REGEX_NUM.test(num)) throw new CustomError(ERROR_MESSAGE.shouldBeNumber);
   }
   /**
   * 입력값이 1000의 배수인지 확인하는 메서드
@@ -23,7 +23,7 @@ class BuyingMoneyValidator {
   }
 
   static validateBuyingMoney(num) {
-    this.isNumber(num);
+    // this.isNumber(num);
     this.isThousandMultiple(num);
   }
 }

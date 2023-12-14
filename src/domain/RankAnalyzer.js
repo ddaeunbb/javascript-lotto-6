@@ -5,7 +5,7 @@ class RankAnalyzer {
 
   constructor(money) {
     BuyingMoneyValidator.validateBuyingMoney(money);
-    this.#buyingMoney = money;
+    this.#buyingMoney = Number(money);
   }
 }
 
