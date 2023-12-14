@@ -7,6 +7,7 @@ class App {
   async play() {
     try {
       await this.#controller.issueLotto();
+      await this.#controller.drawLottery();
     } catch (error) {
       Console.print(error.message);
     }
