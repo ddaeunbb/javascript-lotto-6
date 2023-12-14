@@ -10,6 +10,11 @@ const InputView = Object.freeze({
   async readLotteryNum() {
     const input = await Console.readLineAsync(INPUT_MESSAGE.readLotteryNum);
     return input;
+  },
+  
+  async readBonusNum() {
+    const input = await Console.readLineAsync(INPUT_MESSAGE.readBonusNum);
+    return input;
   }
 });
 

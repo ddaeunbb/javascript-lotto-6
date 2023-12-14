@@ -22,6 +22,8 @@ class LottoController {
     const lotteryNum = await InputView.readLotteryNum();
     const lotteryNumArr = strTostrArrConvertor(lotteryNum);
     this.#lotto = new Lotto(lotteryNumArr);
+    const bonusNum = await InputView.readBonusNum();
+    this.#lotto.pickBonusNum(bonusNum);
   }
 }
 

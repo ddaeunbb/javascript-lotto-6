@@ -36,7 +36,7 @@ class LotteryNumValidator {
     if(!(number >= start && number <= end)) throw new CustomError(ERROR_MESSAGE.shouldInNumRange);
   }
 
-  static validateLotterNum(numArr) {
+  static validateLotteryNum(numArr) {
     this.isLenSix(numArr);
     this.isUnique(numArr);
     numArr.forEach(num => {
