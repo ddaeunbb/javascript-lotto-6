@@ -8,6 +8,7 @@ class App {
     try {
       await this.#controller.issueLotto();
       await this.#controller.drawLottery();
+      this.#controller.calculateLotto();
     } catch (error) {
       Console.print(error.message);
     }

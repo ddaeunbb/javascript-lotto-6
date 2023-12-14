@@ -17,6 +17,12 @@ class Lotto {
     BonusNumValidator.validateBonusNum(this.#numbers, bonusNum);
     this.#numbers.push(Number(bonusNum));
   }
+
+  issuePrizeLotto() {
+    const lotto = [...this.#numbers];
+    const bonus = lotto.pop();
+    return { lotto, bonus };
+  }
 }
 
 export default Lotto;

@@ -1,3 +1,4 @@
+import { Console } from '@woowacourse/mission-utils';
 import OutputView from '../view/OutputView';
 import DongHaengLottery from '../domain/DongHaengLottery';
 import RankAnalyzer from '../domain/RankAnalyzer';
@@ -24,6 +25,11 @@ class LottoController {
     this.#lotto = new Lotto(lotteryNumArr);
     const bonusNum = await InputView.readBonusNum();
     this.#lotto.pickBonusNum(bonusNum);
+  }
+
+  calculateLotto() {
+    const totalLottos = this.#lotto.issuePrizeLotto();
+    const result = this.#dongHaengLottery.calculateTotalLotto(totalLottos);
   }
 }
 
