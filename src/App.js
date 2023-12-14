@@ -1,5 +1,16 @@
+import { Console } from '@woowacourse/mission-utils';
+import LottoController from './controller/LottoController';
+
 class App {
-  async play() {}
+  #controller = new LottoController();
+
+  async play() {
+    try {
+      await this.#controller.issueLotto();
+    } catch (error) {
+      Console.print(error.message);
+    }
+  }
 }
 
 export default App;
