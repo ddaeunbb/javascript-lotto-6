@@ -3,7 +3,7 @@ export const NUM = Object.freeze({
   six: 6,
 });
 
-export const NUM_LOTTO = {
+export const NUM_LOTTO = Object.freeze({
   start: 1,
   end: 45,
-}
+})
